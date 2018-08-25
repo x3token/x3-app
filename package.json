@@ -37,7 +37,8 @@
     "start": "gatsby develop",
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "truffle test",
+    "deploy-contract": "truffle migrate"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.0.0-rc.1",
@@ -57,7 +58,8 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-standard": "^3.1.0",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "truffle-solidity-loader": "^0.1.0"
   },
   "repository": {
     "type": "git",

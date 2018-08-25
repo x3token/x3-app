@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
 
-import X3Token from '../../contracts/X3Token.sol'
+import contract from '../utils/contract'
 
 import Layout from '../layout'
 
@@ -44,6 +44,13 @@ const SubHeading = styled.h2`
 const Strong = styled.strong`
   color: inherit;
 `
+
+class TokenStore {}
+
+const store = new TokenStore()
+
+console.log('Contract', contract)
+console.log('Store', store)
 
 const Landing = () => (
   <Layout>
