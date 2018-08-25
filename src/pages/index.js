@@ -1,10 +1,19 @@
 import React, {Component} from 'react'
 import styled from 'react-emotion'
+import {observer} from 'mobx-react'
+import {observable} from 'mobx'
 
-import x3 from '../utils/x3'
-import contract from '../utils/contract'
+import Tabs from '../ui/Tabs'
+import Paper from '../ui/Paper'
 
-import Layout from '../layout'
+import BuyToken from '../buy-token'
+import SendHappiness from '../send-happiness'
+
+const Backdrop = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1000px;
+`
 
 const Container = styled.div`
   display: flex;
@@ -12,46 +21,35 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  width: 100%;
 `
 
-const Heading = styled.h1`
-  font-size: 4.3em;
-  color: #333;
+const tabs = ['Buy', 'Send']
 
-  @media (max-width: 800px) {
-    font-size: 2.8em;
+const Card = styled(Paper)`
+  width: 100%;
+`
+
+@observer
+export default class Landing extends Component {
+  @observable
+  tab = 'Buy'
+
+  go = tab => {
+    this.tab = tab
   }
 
-  @media (max-width: 500px) {
-    font-size: 2.2em;
-  }
-`
-
-const SubHeading = styled.h2`
-  margin-top: 1.8em;
-  font-size: 1.8em;
-  color: #555;
-  font-weight: 300;
-
-  @media (max-width: 800px) {
-    font-size: 1.3em;
-  }
-`
-
-const Strong = styled.strong`
-  color: inherit;
-`
-
-class Landing extends Component {
   render() {
     return (
-      <Layout>
+      <Backdrop>
         <Container>
-          <Heading>X3Token</Heading>
+          <Tabs tab={this.tab} tabs={tabs} go={this.go} color="#d4145a" />
+          <Card>
+            {this.tab === 'Buy' && <BuyToken />}
+            {this.tab === 'Send' && <SendHappiness />}
+          </Card>
         </Container>
-      </Layout>
+      </Backdrop>
     )
   }
 }
-
-export default Landing

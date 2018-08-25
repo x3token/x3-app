@@ -83,7 +83,7 @@ contract X3Token is ERC20 {
     uint cost = msec * getPriceRange(strength);
   
     require(msec <= 20000);
-    require(strength >= 150);
+    require(strength >= 130);
     require(strength <= 255);
     require(balanceOf(msg.sender) >= cost);
     
