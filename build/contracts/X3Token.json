@@ -318,8 +318,8 @@
           }
         ],
         "contractDependencies": [
-          527,
-          495
+          495,
+          527
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -5043,8 +5043,8 @@
           }
         ],
         "contractDependencies": [
-          527,
-          495
+          495,
+          527
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -9708,13 +9708,19 @@
     "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
   "networks": {
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0x00b1202a23b3d49c08a150a865b584eb096d03ac",
+      "transactionHash": "0x7c2a12c779034ed6d4ea315bb8ac3adee5b9ed2f1ed039617b10ee6de340f399"
+    },
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x4bb7cf9db85f551572121d86d775d797b6f9f7c2",
-      "transactionHash": "0x4b5ea60c1d4721aee3b5114e39546bafe367659174714674b380dd93e863208f"
+      "address": "0xf7aeb49a0052dccd921ba67deccd98b9a08584c6",
+      "transactionHash": "0xe1a03ec4c6587f5c1d932f4b1829ad55bcdef656e059f2a1e535244dbc78b4d3"
     }
   },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-08-25T18:24:21.387Z"
+  "updatedAt": "2018-08-25T19:06:32.542Z"
 }
