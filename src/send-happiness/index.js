@@ -36,7 +36,7 @@ export default class SendHappiness extends Component {
     return (
       <div>
         <Heading>
-          ราคา {x3.pricing} XTN | มี {x3.balance} XTN
+          ราคา {x3.pricing} XXX | มี {x3.balance} XXX
         </Heading>
 
         <DurationSelector />

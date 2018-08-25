@@ -29,7 +29,7 @@ export default class BuyToken extends Component {
   @observable
   ether = '0.01'
 
-  get toXTN() {
+  get toXXX() {
     return Eth.toWei(this.ether, 'ether')
       .div(rate)
       .toString()
@@ -42,7 +42,7 @@ export default class BuyToken extends Component {
   refresh = () => x3.fetchBalance()
 
   buyToken = async () => {
-    console.log('[X3] Exchanging', this.ether, 'Ether for', this.toXTN, 'XTN')
+    console.log('[X3] Exchanging', this.ether, 'Ether for', this.toXXX, 'XXX')
 
     await x3.buyToken(this.ether)
   }
@@ -50,7 +50,7 @@ export default class BuyToken extends Component {
   render() {
     return (
       <div>
-        <Heading>{x3.balance} XTN</Heading>
+        <Heading>{x3.balance} XXX</Heading>
 
         <Button onClick={this.refresh} info>
           Refresh
@@ -59,7 +59,7 @@ export default class BuyToken extends Component {
         <br />
 
         <div>
-          {this.ether} Ether {'=>'} {this.toXTN} XTN
+          {this.ether} Ether {'=>'} {this.toXXX} XXX
         </div>
 
         <div style={{margin: '1.2em 0'}}>
