@@ -6,6 +6,7 @@ import {observable} from 'mobx'
 import Tabs from '../ui/Tabs'
 import Paper from '../ui/Paper'
 
+import Layout from '../layout'
 import BuyToken from '../buy-token'
 import SendHappiness from '../send-happiness'
 
@@ -45,15 +46,17 @@ export default class Landing extends Component {
 
   render() {
     return (
-      <Backdrop>
-        <Container>
-          <Tabs tab={this.tab} tabs={tabs} go={this.go} color="#d4145a" />
-          <Card>
-            {this.tab === 'Buy' && <BuyToken />}
-            {this.tab === 'Send' && <SendHappiness />}
-          </Card>
-        </Container>
-      </Backdrop>
+      <Layout>
+        <Backdrop>
+          <Container>
+            <Tabs tab={this.tab} tabs={tabs} go={this.go} color="#d4145a" />
+            <Card>
+              {this.tab === 'Buy' && <BuyToken />}
+              {this.tab === 'Send' && <SendHappiness />}
+            </Card>
+          </Container>
+        </Backdrop>
+      </Layout>
     )
   }
 }
