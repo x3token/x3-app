@@ -1,5 +1,7 @@
-var Migrations = artifacts.require("./Migrations.sol");
+const Migrations = artifacts.require('./Migrations.sol')
+const X3Token = artifacts.require('./X3Token.sol')
 
-module.exports = function(deployer) {
-  deployer.deploy(Migrations);
-};
+module.exports = async deployer => {
+  deployer.deploy(Migrations)
+  deployer.deploy(X3Token)
+}

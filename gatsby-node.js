@@ -1,8 +1,26 @@
-exports.modifyWebpackConfig = ({config, stage}) => {
-  config.loader({
-    test: /\.sol/,
-    loader: 'truffle-solidity',
+exports.onCreateWebpackConfig = ({
+  stage,
+  getConfig,
+  rules,
+  loaders,
+  actions,
+}) => {
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.sol/,
+          use: [
+            'json-loader',
+            {
+              loader: 'truffle-solidity-loader',
+              options: {
+                network: 'development',
+              },
+            },
+          ],
+        },
+      ],
+    },
   })
-
-  return config
 }
