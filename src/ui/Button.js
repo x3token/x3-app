@@ -43,6 +43,10 @@ const ButtonContainer = styled.button`
     margin-right: 0.3em;
   }
 
+  ${props => props.large && css`
+    font-size: 1.18em;
+  `}
+
   ${props => props.info && css`
     box-shadow: 0 12px 20px -10px rgba(0, 188, 212, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2);
     background: #00d3ee;

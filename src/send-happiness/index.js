@@ -40,7 +40,7 @@ export default class SendHappiness extends Component {
         <DurationSelector />
         <HeavenSelector />
 
-        <Button onClick={this.send} primary>
+        <Button onClick={this.send} primary large>
           Send Happiness
         </Button>
       </div>

@@ -7,7 +7,7 @@ import x3 from '../utils/x3'
 
 import Button from '../ui/Button'
 
-const vibrationStrength = [130, 150, 170, 190, 210, 230, 255]
+const strengths = [130, 150, 170, 190, 210, 230, 255]
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ export default class HeavenSelector extends Component {
   level = 0
 
   select = level => {
-    const strength = vibrationStrength[level + 1]
+    const strength = strengths[level]
     this.level = level
 
     x3.setStrength(strength)
