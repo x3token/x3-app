@@ -30,10 +30,10 @@ class X3Store {
   balance = 0
 
   @observable
-  duration = 0
+  duration = 1000
 
   @observable
-  strength = 0
+  strength = 130
 
   @action
   setDuration(duration) {
@@ -69,6 +69,8 @@ class X3Store {
   }
 
   async sendHappiness(duration = 1000, strength = 150) {
+    console.log('[X3] Sending -- Duration:', duration, 'Strength:', strength)
+
     const from = await getAccount()
 
     if (duration > 20000) {
@@ -78,8 +80,6 @@ class X3Store {
     if (strength < 130 || strength > 255) {
       throw new Error('Strength must be between 130 and 255.')
     }
-
-    console.log('[X3] Sending -- Duration:', duration, 'Strength:', strength)
 
     return contract.sendHappiness(duration, strength, {from})
   }
