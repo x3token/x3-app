@@ -1,12 +1,12 @@
 const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports.siteMetadata = {
-  title: 'Phoomparin Mano',
+  title: 'X3 Token',
 }
 
 const manifest = {
-  name: 'gatsby-starter-default',
-  short_name: 'starter',
+  name: 'X3 Token',
+  short_name: 'X3',
   start_url: '/',
   background_color: '#663399',
   theme_color: '#663399',
