@@ -5,7 +5,10 @@ import X3Token from '../../contracts/X3Token.sol'
 let contract = {}
 
 if (typeof window !== 'undefined') {
-  contract = eth.contract(X3Token.abi).at(X3Token.networks[5777].address)
+  const id = process.env.NODE_ENV === 'production' ? 42 : 5777
+  const network = X3Token.networks[id]
+
+  contract = eth.contract(X3Token.abi).at(network.address)
 
   window.contract = contract
 }
