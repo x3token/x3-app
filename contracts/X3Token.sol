@@ -1,4 +1,4 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
@@ -70,7 +70,7 @@ contract X3Token is ERC20 {
   ///         and Duration (msec) must be less than 20000.
   /// @dev    Vibrator Server should listen for VibratingEvent
   function sendHappiness(uint msec, uint8 strength) public {
-    uint cost = msec * strength;
+    uint cost = msec.div(1000) * strength;
   
     require(msec <= 20000);
     require(strength >= 150);

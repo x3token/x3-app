@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
 
+import x3 from '../utils/x3'
 import contract from '../utils/contract'
 
 import Layout from '../layout'
@@ -51,6 +52,7 @@ const store = new TokenStore()
 
 console.log('Contract', contract)
 console.log('Store', store)
+console.log('x3', x3)
 
 const Landing = () => (
   <Layout>
