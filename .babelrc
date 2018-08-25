@@ -1,16 +1,49 @@
 {
-  "extends": "react-static/.babelrc",
-  "plugins": ["transform-decorators-legacy"],
-  "env": {
-    "production": {
-      "plugins": [
-        ["emotion", {"sourceMap": false, "hoist": true, "autoLabel": true}]
-      ]
-    },
-    "development": {
-      "plugins": [
-        ["emotion", {"sourceMap": true, "hoist": true, "autoLabel": true}]
-      ]
-    }
-  }
+  "cacheDirectory": true,
+  "babelrc": false,
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "loose": true,
+        "modules": false,
+        "useBuiltIns": "usage",
+        "shippedProposals": true,
+        "targets": {
+          "browsers": [">0.25%", "not dead"]
+        }
+      }
+    ],
+    [
+      "@babel/preset-react",
+      {
+        "useBuiltIns": true,
+        "pragma": "React.createElement"
+      }
+    ],
+    "@babel/preset-flow"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    "@babel/plugin-syntax-dynamic-import",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "helpers": true,
+        "regenerator": true,
+        "polyfill": false
+      }
+    ]
+  ]
 }
