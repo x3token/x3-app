@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import styled from 'react-emotion'
 
 import x3 from '../utils/x3'
@@ -12,10 +12,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-
-  @media (min-width: 800px) {
-    border: 20px solid #2d2d30;
-  }
 `
 
 const Heading = styled.h1`
@@ -46,27 +42,16 @@ const Strong = styled.strong`
   color: inherit;
 `
 
-class TokenStore {}
-
-const store = new TokenStore()
-
-console.log('Contract', contract)
-console.log('Store', store)
-console.log('x3', x3)
-
-const Landing = () => (
-  <Layout>
-    <Container>
-      <Heading>
-        <Strong>PHOOMPARIN</Strong>
-        MANO
-      </Heading>
-
-      <SubHeading>
-        <Strong>COMING SOON;</Strong> STAY TUNED.
-      </SubHeading>
-    </Container>
-  </Layout>
-)
+class Landing extends Component {
+  render() {
+    return (
+      <Layout>
+        <Container>
+          <Heading>X3Token</Heading>
+        </Container>
+      </Layout>
+    )
+  }
+}
 
 export default Landing

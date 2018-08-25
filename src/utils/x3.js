@@ -1,3 +1,4 @@
+import {observable} from 'mobx'
 import Eth from 'ethjs'
 
 import eth from './eth'
@@ -9,7 +10,14 @@ async function getAccount() {
   return accounts[0]
 }
 
-class X3 {
+class X3Store {
+  @observable
+  balance = 0
+
+  async fetchBalance() {
+    this.balance = await this.getBalance()
+  }
+
   async getBalance() {
     const account = await getAccount()
     const [amount] = await contract.balanceOf(account)
@@ -21,7 +29,10 @@ class X3 {
     const from = await getAccount()
     const value = Eth.toWei(ether, 'ether')
 
-    return contract.buyToken({from, value})
+    const address = await contract.buyToken({from, value})
+    await this.fetchBalance()
+
+    return address
   }
 
   async sendHappiness(duration = 1000, strength = 150) {
@@ -35,11 +46,14 @@ class X3 {
       throw new Error('Strength must be between 100 and 255.')
     }
 
-    return contract.sendHappiness(duration, strength, {from})
+    const address = contract.sendHappiness(duration, strength, {from})
+    await this.fetchBalance()
+
+    return address
   }
 }
 
-const x3 = new X3()
+const x3 = new X3Store()
 
 if (typeof window !== 'undefined') {
   window.x3 = x3

@@ -9,7 +9,7 @@ contract X3Token is ERC20 {
   uint256 rate = 10 ** 11;
   uint supplies = 1000000;
 
-  event VibratingEvent(uint second, uint8 strength);
+  event VibratingEvent(uint duration, uint8 strength);
 
   mapping (address => uint) balances;
   mapping (address => mapping (address => uint)) internal allowances;
@@ -65,12 +65,22 @@ contract X3Token is ERC20 {
       return true;
   }
 
+  function getPriceRange(uint strength) public pure returns (uint) {
+    if (strength > 230) {return 7;}
+    if (strength > 210) {return 6;}
+    if (strength > 190) {return 5;}
+    if (strength > 170) {return 4;}
+    if (strength > 150) {return 3;}
+    if (strength > 130) {return 2;}
+    return 1;
+  }
+
   /// @author Phoomparin Mano
   /// @notice Strength must be between 150 and 255,
   ///         and Duration (msec) must be less than 20000.
   /// @dev    Vibrator Server should listen for VibratingEvent
   function sendHappiness(uint msec, uint8 strength) public {
-    uint cost = msec.div(1000) * strength;
+    uint cost = msec * getPriceRange(strength);
   
     require(msec <= 20000);
     require(strength >= 150);
