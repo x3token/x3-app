@@ -11,8 +11,9 @@ import SendHappiness from '../send-happiness'
 
 const Backdrop = styled.div`
   width: 100%;
-  margin: 0 auto;
-  max-width: 1000px;
+  min-height: 100vh;
+
+  background: linear-gradient(45deg, #d4145a, #fbb03b);
 `
 
 const Container = styled.div`
@@ -22,12 +23,15 @@ const Container = styled.div`
   justify-content: center;
   min-height: 100vh;
   width: 100%;
+  margin: 0 auto;
+  max-width: 1000px;
 `
 
 const tabs = ['Buy', 'Send']
 
 const Card = styled(Paper)`
   width: 100%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 `
 
 @observer
