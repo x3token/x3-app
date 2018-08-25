@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'react-emotion'
 
+import X3Token from '../../contracts/X3Token.sol'
+
 import Layout from '../layout'
 
 const Container = styled.div`
