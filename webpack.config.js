@@ -69,5 +69,10 @@ export default function(config, {stage}) {
     use: styleLoader,
   })
 
+  config.module.rules[0].oneOf.unshift({
+    test: /\.sol/,
+    loader: 'truffle-solidity',
+  })
+
   return config
 }

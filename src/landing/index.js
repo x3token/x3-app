@@ -6,6 +6,6 @@ const Heading = styled.h1`
   color: #333;
 `
 
-const Landing = () => <Heading>Hello, World</Heading>
+const Landing = () => <Heading>Pizza Hackathon!</Heading>
 
 export default Landing

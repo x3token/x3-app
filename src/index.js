@@ -4,11 +4,15 @@ import {AppContainer} from 'react-hot-loader'
 
 import App from './common/App'
 
+import web3 from './utils/web3'
+
 if (process.env.NODE_ENV !== 'development' && typeof window !== 'undefined') {
-  // require('offline-plugin/runtime').install()
+  require('offline-plugin/runtime').install()
 }
 
 if (typeof document !== 'undefined') {
+  window.web3 = web3
+
   const renderMethod = module.hot
     ? ReactDOM.render
     : ReactDOM.hydrate || ReactDOM.render

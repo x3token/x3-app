@@ -15,10 +15,6 @@ export default {
       path: '/',
       component: 'src/landing',
     },
-    // {
-    //   path: '404',
-    //   component: 'src/pages/404',
-    // },
   ],
   renderToHtml: (render, Component, meta) => {
     const html = render(Component)

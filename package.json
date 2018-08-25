@@ -1,5 +1,5 @@
 {
-  "name": "react-static-example-basic",
+  "name": "pizza-hackathon",
   "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
@@ -17,15 +17,18 @@
     "bulma": "^0.7.1",
     "emotion": "^9.2.6",
     "emotion-server": "^9.2.6",
+    "ethjs": "^0.4.0",
     "mobx": "^5.0.3",
     "mobx-react": "^5.2.5",
+    "openzeppelin-solidity": "^1.12.0",
     "polished": "^1.9.3",
     "ramda": "^0.25.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-emotion": "^9.2.6",
     "react-static": "^6.0.0-beta.16",
-    "recompose": "^0.28.2"
+    "recompose": "^0.28.2",
+    "web3": "^1.0.0-beta.35"
   },
   "devDependencies": {
     "autoprefixer": "^9.1.1",
