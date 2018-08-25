@@ -1,12 +1,11 @@
 const Web3 = require('web3')
-const Queue = require('promise-queue')
-const Promise = require('bluebird')
+const Queue = require('p-queue')
 const SerialPort = require('serialport')
 const child = require('child_process')
 
 const X3Token = require('../build/contracts/X3Token.json')
 
-Queue.configure(Promise)
+const queue = new Queue({concurrency: 1})
 
 function getDevice() {
   const device = child
@@ -28,15 +27,8 @@ console.log('[X3] Using Device at:', device)
 
 const port = new SerialPort(device, {baudRate: 9600})
 
-const maxConcurrent = 1
-const maxQueue = 5000
-
-const queue = new Queue(maxConcurrent, maxQueue)
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-
-// web3 = new Web3('wss://kovan.infura.io/ws')
-const web3 = new Web3('wss://pzcethnode.afourleaf.com:28546')
+const web3 = new Web3('wss://kovan.infura.io/ws')
+// const web3 = new Web3('wss://pzcethnode.afourleaf.com:28546')
 
 console.log('[X3] Connecting to Kovan Testnet')
 
@@ -49,30 +41,32 @@ const myContractInstance = new web3.eth.Contract(abi, address)
 
 console.log('[X3] Contract Address is', address)
 
-function sendToArduino(strength, duration) {
-  console.log('[X3] Vibrating Event:', `#${strength},${duration}#`)
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
-  port.write(`#${strength},${duration}#`, function(err) {
-    if (err) return console.warn('Error on write:', err.message)
+const sendToArduino = (strength, duration) =>
+  new Promise((resolve, reject) => {
+    console.log('[X3] Vibrating Event:', `#${strength},${duration}#`)
 
-    console.log('message written')
+    port.write(`#${strength},${duration}#`, err => {
+      if (err) return reject(err)
+      resolve()
+    })
   })
-}
 
 myContractInstance.events.VibratingEvent().on('data', async event => {
   const {duration, strength} = event.returnValues
   console.log('Event:', event.returnValues)
 
-  async function handler() {
-    console.log('Pending Queues:', queue.getPendingLength())
+  await queue.add(async () => {
     await sendToArduino(strength, duration)
-    await sleep(duration + 400)
-  }
 
-  await queue.add(handler)
+    const msec = parseInt(duration) + 400
+    console.log('--- Sleeping for', msec, 'msec. ---')
 
-  console.log('After Pending Queues:', queue.getPendingLength())
-  console.log('After Q length', queue.getQueueLength())
+    await sleep(msec)
+  })
+
+  console.log('--- Queue Completed ---')
 })
 
 port.on('error', err => console.warn('Error:', err.message))
