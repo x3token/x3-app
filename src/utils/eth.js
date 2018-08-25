@@ -1,8 +1,10 @@
 import Eth from 'ethjs'
 
-const eth = new Eth(web3.currentProvider)
+let eth = {}
 
 if (typeof window !== 'undefined') {
+  eth = new Eth(web3.currentProvider)
+
   window.Eth = Eth
   window.eth = eth
 }

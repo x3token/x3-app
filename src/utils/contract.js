@@ -2,9 +2,11 @@ import eth from './eth'
 
 import X3Token from '../../contracts/X3Token.sol'
 
-const contract = eth.contract(X3Token.abi).at(X3Token.networks[5777].address)
+let contract = {}
 
 if (typeof window !== 'undefined') {
+  contract = eth.contract(X3Token.abi).at(X3Token.networks[5777].address)
+
   window.contract = contract
 }
 
