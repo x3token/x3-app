@@ -8,6 +8,13 @@ import DurationSelector from './DurationSelector'
 import x3 from '../utils/x3'
 import Button from '../ui/Button'
 
+import Camera from '../x3-live/Camera'
+
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 800px;
+`
+
 const Heading = styled.h1`
   margin-bottom: 0.2em;
   font-size: 2.3em;
@@ -35,16 +42,20 @@ export default class SendHappiness extends Component {
   render() {
     return (
       <div>
-        <Heading>
-          ราคา {x3.pricing} XXX | มี {x3.balance} XXX
-        </Heading>
+        <Camera />
 
-        <DurationSelector />
-        <HeavenSelector />
+        <Container>
+          <Heading>
+            ราคา {x3.pricing} XXX | มี {x3.balance} XXX
+          </Heading>
 
-        <Button onClick={this.send} primary large>
-          Send Happiness
-        </Button>
+          <DurationSelector />
+          <HeavenSelector />
+
+          <Button onClick={this.send} primary large>
+            Send Happiness
+          </Button>
+        </Container>
       </div>
     )
   }

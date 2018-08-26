@@ -4,7 +4,7 @@ import Eth from 'ethjs'
 import eth from './eth'
 import contract from './contract'
 
-function getPriceRange(strength) {
+export function getPriceRange(strength) {
   if (strength > 230) return 7
   if (strength > 210) return 6
   if (strength > 190) return 5

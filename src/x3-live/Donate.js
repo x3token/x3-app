@@ -11,6 +11,8 @@ const Sticker = styled.img`
   min-width: 10em;
   max-width: 10em;
   max-height: 10em;
+
+  cursor: pointer;
 `
 
 export default class Donate extends Component {
@@ -21,7 +23,7 @@ export default class Donate extends Component {
           <Sticker
             key={i}
             src={require(`../images/xstickers/${i}.png`)}
-            onClick={() => this.props.select(i)}
+            onClick={() => this.props.send(i)}
           />
         ))}
       </Container>

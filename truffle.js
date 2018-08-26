@@ -1,5 +1,3 @@
-const HDWalletProvider = require('truffle-hdwallet-provider')
-
 module.exports = {
   networks: {
     development: {
@@ -9,6 +7,8 @@ module.exports = {
     },
     kovan: {
       provider() {
+        const HDWalletProvider = require('truffle-hdwallet-provider')
+
         const {KEY, MMEMONIC} = process.env
         const endpoint = 'https://kovan.infura.io/v3/' + KEY
         const provider = new HDWalletProvider(MMEMONIC, endpoint, 3)

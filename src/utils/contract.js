@@ -11,8 +11,16 @@ if (typeof window !== 'undefined') {
     X3Token = require('../../build/contracts/X3Token.json')
   }
 
-  const id = process.env.NODE_ENV === 'production' ? 42 : 5777
+  // Private Net: 5777
+  let id = 42
+
+  if (process.env.NODE_ENV === 'production') {
+    id = 42
+  }
+
   const network = X3Token.networks[id]
+
+  console.log('[X3] Using Network', id, network)
 
   contract = eth.contract(X3Token.abi).at(network.address)
 
