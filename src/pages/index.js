@@ -7,6 +7,8 @@ import Tabs from '../ui/Tabs'
 import Paper from '../ui/Paper'
 
 import Layout from '../layout'
+
+import Live from '../x3-live'
 import BuyToken from '../buy-token'
 import SendHappiness from '../send-happiness'
 
@@ -29,7 +31,7 @@ const Container = styled.div`
   max-width: 1000px;
 `
 
-const tabs = ['Buy', 'Send']
+const tabs = ['Live', 'Buy', 'Send']
 
 const Card = styled(Paper)`
   width: 100%;
@@ -39,7 +41,7 @@ const Card = styled(Paper)`
 @observer
 export default class Landing extends Component {
   @observable
-  tab = 'Buy'
+  tab = 'Live'
 
   go = tab => {
     this.tab = tab
@@ -53,6 +55,7 @@ export default class Landing extends Component {
             <Tabs tab={this.tab} tabs={tabs} go={this.go} color="#d4145a" />
             <Card>
               {this.tab === 'Buy' && <BuyToken />}
+              {this.tab === 'Live' && <Live />}
               {this.tab === 'Send' && <SendHappiness />}
             </Card>
           </Container>
