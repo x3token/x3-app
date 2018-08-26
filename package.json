@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "author": "Phoomparin Mano <work@phoom.in.th>",
   "dependencies": {
+    "animate.css": "^3.7.0",
     "axios": "^0.18.0",
     "bulma": "^0.7.1",
     "emotion": "^9.2.6",
@@ -27,9 +28,11 @@
     "react-emotion": "^9.2.6",
     "react-helmet": "^5.2.0",
     "react-ink": "^6.4.0",
+    "react-webcam": "^1.0.1",
     "recompose": "^0.28.2",
     "serialport": "^6.2.2",
-    "truffle-hdwallet-provider": "^0.0.6"
+    "truffle-hdwallet-provider": "^0.0.6",
+    "web3": "1.0.0-beta.33"
   },
   "keywords": [
     "gatsby"
