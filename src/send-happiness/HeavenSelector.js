@@ -11,7 +11,8 @@ const strengths = [130, 150, 170, 190, 210, 230, 255]
 
 const ButtonContainer = styled.div`
   display: flex;
-  margin: 1.2em 0;
+  flex-wrap: wrap;
+  margin: 0.8em 0;
 `
 
 @observer
@@ -34,7 +35,11 @@ export default class HeavenSelector extends Component {
             key={level}
             onClick={() => this.select(level)}
             success={this.level === level}
-            style={{marginRight: '1em'}}>
+            style={{
+              marginRight: '1em',
+              marginBottom: '0.5em',
+              marginTop: '0.5em',
+            }}>
             สวรรค์ชั้น {level + 1}
           </Button>
         ))}
