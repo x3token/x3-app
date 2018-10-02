@@ -18,7 +18,7 @@ module.exports = {
 
         return provider
       },
-      network_id: 3,
+      network_id: 42,
       gas: 4700000,
     },
   },
