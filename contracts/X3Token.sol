@@ -25,7 +25,7 @@ contract X3Token is ERC20 {
   function transfer(address to, uint amount)
   public returns (bool)
   {
-      require(amount <= balances[msg.sender]);
+      require(amount <= balances[msg.sender], "amount must less than balance of sender");
 
       Transfer(msg.sender, to, amount);
 
@@ -41,9 +41,9 @@ contract X3Token is ERC20 {
   function transferFrom(address from, address to, uint amount)
   public returns (bool)
   {
-      require(to != address(0));
-      require(amount <= allowance(from, to));
-      require(amount <= balances[from]);
+      require(to != address(0), "an address of receiver must not empty");
+      require(amount <= allowance(from, to), "amount must lower than allowance");
+      require(amount <= balances[from], "amount must lower than sender balance");
 
       balances[from] = balances[from].sub(amount);
       balances[to] = balances[to].add(amount);
@@ -82,10 +82,10 @@ contract X3Token is ERC20 {
   function sendHappiness(uint msec, uint8 strength) public {
     uint cost = msec * getPriceRange(strength);
   
-    require(msec <= 20000);
-    require(strength >= 130);
-    require(strength <= 255);
-    require(balanceOf(msg.sender) >= cost);
+    require(msec <= 20000, "duration must less than 20000 millisecond");
+    require(strength >= 130, "strength is valid when the value between 130 and 255");
+    require(strength <= 255, "strength is valid when the value between 130 and 255");
+    require(balanceOf(msg.sender) >= cost, "a sender must have the sufficient fund");
     
     balances[msg.sender] = balances[msg.sender].sub(cost);
 
