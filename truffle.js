@@ -11,13 +11,14 @@ module.exports = {
 
         const {KEY, MMEMONIC} = process.env
         const endpoint = 'https://kovan.infura.io/v3/' + KEY
-        const provider = new HDWalletProvider(MMEMONIC, endpoint, 3)
+        const address_index = 3
+        const provider = new HDWalletProvider(MMEMONIC, endpoint, address_index)
 
         console.log('[HDWallet] Endpoint is', endpoint)
 
         return provider
       },
-      network_id: 3,
+      network_id: 42,
       gas: 4700000,
     },
   },
